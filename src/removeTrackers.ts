@@ -18,25 +18,28 @@ const trackers = new Map<string, (url: URL, searchParams: URLSearchParams) => st
   ["www.gopjn.com", p("url")],
   ["the-home-depot-ca.pxf.io", p("u")],
 ]);
-[...document.getElementsByTagName("a")].forEach((a) => {
+export function removeTrackers() {
+  [...document.getElementsByTagName("a")].forEach((a) => {
+    try {
+      const currentUrl = new URL(a.href);
+      const extractor = trackers.get(currentUrl.host);
+      if (extractor) {
+        let newUrl = extractor(currentUrl, currentUrl.searchParams);
+        if (newUrl) {
+          a.href = newUrl;
+        }
+      }
+    } catch {}
+  });
   try {
-    const currentUrl = new URL(a.href);
-    const extractor = trackers.get(currentUrl.host);
-    if (extractor) {
-      let newUrl = extractor(currentUrl, currentUrl.searchParams);
-      if (newUrl) {
-        a.href = newUrl;
+    const currentUrl = new URL(window.location.href);
+    if (trackers.has(currentUrl.host)) {
+      const extractor = trackers.get(currentUrl.host);
+      if (extractor) {
+        let newUrl = extractor(currentUrl, currentUrl.searchParams);
+        window.location.href = newUrl;
       }
     }
   } catch {}
-});
-try {
-  const currentUrl = new URL(window.location.href);
-  if (trackers.has(currentUrl.host)) {
-    const extractor = trackers.get(currentUrl.host);
-    if (extractor) {
-      let newUrl = extractor(currentUrl, currentUrl.searchParams);
-      window.location.href = newUrl;
-    }
-  }
-} catch {}
+}
+removeTrackers();
