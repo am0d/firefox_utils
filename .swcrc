@@ -1,0 +1,23 @@
+{
+  "jsc": {
+    "parser": {
+      "syntax": "typescript"
+    },
+    "transform": {
+      "optimizer": {
+        "simplify": true
+      }
+    },
+    "minify": {
+      "compress": true,
+      "mangle": true
+    }
+  },
+  "minify": true,
+  "module": {
+    "type": "umd"
+  },
+  "env": {
+    "mode": "entry",
+    "coreJs": 3
+  }}

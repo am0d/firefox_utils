@@ -1,0 +1,13 @@
+{
+  "$schema": "http://json.schemastore.org/prettierrc",
+  "printWidth": 120,
+  "overrides": [
+    {
+      "files": [".swcrc"],
+      "options": {
+        "trailingComma": "none",
+        "parser": "json"
+      }
+    }
+  ]
+}
