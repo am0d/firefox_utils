@@ -20,4 +20,5 @@
   "env": {
     "mode": "entry",
     "coreJs": 3
-  }}
+  }
+}

@@ -14,7 +14,7 @@
     "format": "yarn prettier -u -w \"**/*\"",
     "typecheck": "yarn tsc -p .",
     "build": "yarn swc src/ -d build/",
-    "publish": "yarn version minor -i && yarn typecheck && yarn build "
+    "publish": "yarn version minor -i && yarn typecheck && yarn build && cp -r build/ docs/"
   },
   "packageManager": "yarn@3.1.0"
 }
