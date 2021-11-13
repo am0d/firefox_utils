@@ -1,6 +1,6 @@
 {
   "name": "firefox",
-  "version": "1.5.0",
+  "version": "1.6.0",
   "main": "index.js",
   "license": "MIT",
   "devDependencies": {
@@ -13,8 +13,8 @@
   "scripts": {
     "format": "yarn prettier -u -w \"**/*\"",
     "typecheck": "yarn tsc -p .",
-    "build": "yarn swc src/ -d build/",
-    "publish": "yarn version minor -i && yarn typecheck && yarn build && cp -r build/ docs/"
+    "build": "yarn swc src/ -d docs/",
+    "publish": "yarn version minor -i && yarn typecheck && yarn build"
   },
   "packageManager": "yarn@3.1.0"
 }

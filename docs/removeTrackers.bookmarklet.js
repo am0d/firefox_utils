@@ -1,1 +1,1 @@
-!function(){var a=document.createElement("script");a.src="http://am0d.github.io/removeTrackers.js",a.addEventListener?a.addEventListener("load",function(){removeTrackers()},!1):a.readyState?a.onreadystatechange=function(){removeTrackers()}:a.onload=function(){removeTrackers()},document.body.appendChild(a)}()
+!function(){if("function"==typeof removeTrackers)removeTrackers();else{var a=document.createElement("script");a.src="https://am0d.github.io/removeTrackers.js",document.body.appendChild(a)}}()

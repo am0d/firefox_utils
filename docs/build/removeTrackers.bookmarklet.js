@@ -1,1 +1,0 @@
-!function(){if("function"==typeof removeTrackers)removeTrackers();else{var a=document.createElement("script");a.src="https://am0d.github.io/removeTrackers.js",document.body.appendChild(a)}}()
