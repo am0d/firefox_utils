@@ -17,28 +17,41 @@ const trackers = new Map<string, (url: URL, searchParams: URLSearchParams) => st
   ["www.awin1.com", p("p")],
   ["www.gopjn.com", p("url")],
   ["the-home-depot-ca.pxf.io", p("u")],
+  [
+    "",
+    (url, searchParams) => {
+      if (url.protocol === "about" && url.pathname === "neterror") {
+        const originalUrl = searchParams.get("u");
+        if (originalUrl) {
+          const newUrl = removeTracker(originalUrl);
+          if (newUrl !== originalUrl) {
+            return newUrl;
+          }
+        }
+      }
+      return url.href;
+    },
+  ],
 ]);
+function removeTracker(href: string): string {
+  const url = new URL(href);
+  const extractor = trackers.get(url.host);
+  if (extractor) {
+    let newUrl = extractor(url, url.searchParams);
+    return newUrl;
+  }
+  return href;
+}
 export function removeTrackers() {
   [...document.getElementsByTagName("a")].forEach((a) => {
     try {
-      const currentUrl = new URL(a.href);
-      const extractor = trackers.get(currentUrl.host);
-      if (extractor) {
-        let newUrl = extractor(currentUrl, currentUrl.searchParams);
-        if (newUrl) {
-          a.href = newUrl;
-        }
-      }
+      a.href = removeTracker(a.href);
     } catch {}
   });
   try {
-    const currentUrl = new URL(window.location.href);
-    if (trackers.has(currentUrl.host)) {
-      const extractor = trackers.get(currentUrl.host);
-      if (extractor) {
-        let newUrl = extractor(currentUrl, currentUrl.searchParams);
-        window.location.href = newUrl;
-      }
+    let newUrl = removeTracker(window.location.href);
+    if (newUrl !== window.location.href) {
+      window.location.href = newUrl;
     }
   } catch {}
 }
