@@ -4,7 +4,7 @@ declare function removeTrackers(): void;
     removeTrackers();
   } else {
     var new_script = document.createElement("script");
-    new_script.src = "https://am0d.github.io/firefox/removeTrackers.js";
+    new_script.setAttribute("src", "https://am0d.github.io/firefox/removeTrackers.js");
     document.body.appendChild(new_script);
   }
 })();

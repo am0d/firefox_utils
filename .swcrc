@@ -8,15 +8,15 @@
       },
       "transform": {
         "optimizer": {
-          "simplify": false
+          "simplify": true
         }
       },
       "minify": {
-        "compress": false,
-        "mangle": false
+        "compress": true,
+        "mangle": true
       }
     },
-    "minify": false,
+    "minify": true,
     "module": {
       "type": "umd"
     },
@@ -33,18 +33,15 @@
       },
       "transform": {
         "optimizer": {
-          "simplify": true
+          "simplify": false
         }
       },
       "minify": {
-        "compress": true,
+        "compress": false,
         "mangle": true
-      }
+      },
+      "target": "es5"
     },
-    "minify": true,
-    "env": {
-      "mode": "entry",
-      "coreJs": 3
-    }
+    "minify": true
   }
 ]
