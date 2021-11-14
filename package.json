@@ -13,7 +13,7 @@
   "scripts": {
     "format": "yarn prettier -u -w \"**/*\"",
     "typecheck": "yarn tsc -p .",
-    "build": "yarn swc src/ -d docs/",
+    "build": "yarn swc -s true src/ -d docs/",
     "publish": "yarn version minor -i && yarn typecheck && yarn build"
   },
   "packageManager": "yarn@3.1.0"

@@ -1,1 +1,2 @@
 !function(){if("function"==typeof removeTrackers)removeTrackers();else{var a=document.createElement("script");a.src="https://am0d.github.io/firefox/removeTrackers.js",document.body.appendChild(a)}}()
+//# sourceMappingURL=removeTrackers.bookmarklet.js.map

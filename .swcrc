@@ -8,15 +8,15 @@
       },
       "transform": {
         "optimizer": {
-          "simplify": true
+          "simplify": false
         }
       },
       "minify": {
-        "compress": true,
-        "mangle": true
+        "compress": false,
+        "mangle": false
       }
     },
-    "minify": true,
+    "minify": false,
     "module": {
       "type": "umd"
     },
