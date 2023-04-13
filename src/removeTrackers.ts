@@ -24,7 +24,7 @@ const trackers = new Map<string, (url: URL, searchParams: URLSearchParams) => st
         const originalUrl = searchParams.get("u");
         if (originalUrl) {
           const newUrl = removeTracker(originalUrl);
-          if (newUrl !== originalUrl) {
+          if (newUrl && newUrl !== originalUrl) {
             return newUrl;
           }
         }
@@ -38,7 +38,9 @@ function removeTracker(href: string): string {
   const extractor = trackers.get(url.host);
   if (extractor) {
     let newUrl = extractor(url, url.searchParams);
-    return newUrl;
+    if (newUrl && newUrl != href) {
+      return newUrl;
+    }
   }
   return href;
 }
